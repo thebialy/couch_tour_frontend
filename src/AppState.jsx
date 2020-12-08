@@ -1,4 +1,4 @@
-import React from "React"
+import React, {useContext, useReducer} from "React"
 
 // INITIAL STATE
 
@@ -7,7 +7,7 @@ const initialState = {
 }
 
 // REDUCER
-// action = {type: "", payload: ---}
+
 const reducer = (state, action) => {
 
     switch(action.type){
@@ -27,7 +27,12 @@ export const AppState = (props) => {
 
     const [state, dispatch] = useReducer(reducer, initialState)
 
-    return <AppContext.Provider value={{state, dispatch}}>{props.children}</AppContext.Provider>
+    return (
+         <AppContext.Provider value={{state, dispatch}}>
+            {props.children}
+        </AppContext.Provider>
+    ) 
+
 }
 
 //useAppState Hook

@@ -3,7 +3,7 @@ import React, {useContext, useReducer} from "react"
 // INITIAL STATE
 
 const initialState = {
-    url: "http://couch-tour-backend.herokuapp.com",
+    url: "https://couch-tour-backend.herokuapp.com",
     token: null,
     username: null,
     streams: null,

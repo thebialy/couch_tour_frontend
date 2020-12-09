@@ -9,9 +9,13 @@ const Nav = (props) => {
     return <header>
         <h1>Couch Tour app</h1>
         <nav>
+        {!state.token ? (
+            <>
             <Link to="/"><div>Home</div></Link>
-            {!state.token ? (<><Link to="/auth/signup"><div>Signup</div></Link>
-            <Link to="/auth/login"><div>Login</div></Link></>) : null}
+            <Link to="/auth/signup"><div>Signup</div></Link>
+            <Link to="/auth/login"><div>Login</div></Link>
+            </>
+        ) : null}
             {state.token ? <div onClick={() => {
                 dispatch({type: "logout"})
                 props.history.push("/")

@@ -38,6 +38,10 @@ const reducer = (state, action) => {
             newState = {...state, streams: action.payload}
             return newState
             break
+        case "select":
+            newState = {...state, edit: action.payload}
+            return newState;
+            break;
         default:
             return state;
             break;

@@ -11,11 +11,11 @@ const Form = (props) => {
 
     const actions = {
         new: () => {
-            return fetch(state.url + "/livestreams", {
+            return fetch(state.url + "/livestreams/", {
                 method: "post",
                 headers: {
                     "Content-Type": "application/json",
-                    Authorization: "bearer" + token
+                    Authorization: "bearer " + token
                 },
                 body: JSON.stringify(formData),
             }).then((response) => response.json())
@@ -25,7 +25,7 @@ const Form = (props) => {
                 method: "put",
                 headers: {
                     "Content-Type": "application/json",
-                    Authorization: "bearer" + token
+                    Authorization: "bearer " + token
                 },
                 body: JSON.stringify(formData),
             }).then((response) => response.json())

@@ -23,33 +23,39 @@ const Dashboard = (props) => {
 
     const loaded = () => {
         return <div>
-        <h1>{username}'s Upcoming Livestreams</h1>
-        <Link to="/dashboard/new"><button>Add new livestream</button></Link>
+        
+        <Link to="/dashboard/new"><a className="new-btn">Add new livestream</a></Link>
         <Route path="/dashboard/:action" render={(rp) => <Form {...rp} getStreams={getStreams}/>}/>
-        <ul>
-            {streams.map(stream => (
-                <div>
-                    <h2>{stream.band}</h2>
-                    <h4>{stream.show_day}</h4>
-                    <h4>{stream.show_link}</h4>
-                        <button onClick={() => {
+        <div className="stream-h2"><h2>Upcoming Livestreams</h2></div>
+        <br/>
+        <section className="card-section">
+            <div className="card-grid">
+            {streams.map(stream => (                   
+                <a className="card">
+                    <div className="card-background" style={{backgroundImage: `url(${stream.img})`}}></div>  
+                    <div className="card-content">                
+                        <p className="card-show-day">{stream.show_day}</p>
+                        <h2 className="card-band">{stream.band}</h2>
+                        <h4 className="card-link">{stream.show_link}</h4>
+                        <a className="card-btn"onClick={() => {
                             dispatch({type: "select", payload: stream})
                             props.history.push("/dashboard/edit")
-                        }}>Edit</button>
-                        <button onClick={() => {
+                        }}>Edit</a>
+                        <a className="card-btn" onClick={() => {
                             fetch(url + "/livestreams/" + stream.id, {
                                 method: "delete",
                                 headers: {
                                     Authorization: "bearer " + token
                                 }
                             }).then(() => getStreams());
-                        }}>Delete</button>
-                </div>
+                        }}>Delete</a>
+                    </div>     
+                </a>                 
             ))}
-        </ul>
+            </div> 
+         </section>
         </div>
     }
-
     return streams ? loaded() : <h1>Loading...</h1>;
 }
 

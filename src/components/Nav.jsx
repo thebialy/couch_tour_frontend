@@ -7,20 +7,23 @@ const Nav = (props) => {
     const {state, dispatch} = useAppState()
 
     return <header>
-        <h1>Couch Tour</h1>
+        
         <nav>
         {!state.token ? (
-            <>
-            <Link to="/"><div>Home</div></Link>
-            <Link to="/auth/signup"><div>Signup</div></Link>
-            <Link to="/auth/login"><div>Login</div></Link>
-            </>
+            <div className="nav-div">
+            <Link to="/"><div className="btn-nav">Home</div></Link>
+            <Link to="/auth/signup"><div className="btn-nav">Signup</div></Link>
+            <Link to="/auth/login"><div className="btn-nav">Login</div></Link>
+            </div>
         ) : null}
-            {state.token ? <div onClick={() => {
+        <div className="nav-div">
+            {state.token ? <div className="btn-nav" onClick={() => {
                 dispatch({type: "logout"})
                 props.history.push("/")
             }}>Logout</div> : null}
+            </div>
         </nav>
+        <h1 className="neon">Couch Tour</h1>
     </header>
 }
 

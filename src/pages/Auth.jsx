@@ -55,20 +55,27 @@ const handleSubmit = (event) => {
     });
 };
     return (
-    <div>
+    <div className="login-box">
         <form onSubmit={handleSubmit}>
-            <input 
-                type="text" 
-                name="username" 
-                value={formData.username} 
-                onChange={handleChange}
-            />
-            <input 
-                type="password" 
-                name="password" 
-                value={formData.password} 
-                onChange={handleChange}
-            />
+            <span className="login-text">{type}</span>
+            <div className="input-container">
+                <input 
+                    type="text" 
+                    name="username" 
+                    value={formData.username} 
+                    onChange={handleChange}
+                />
+                <label>Username</label>
+            </div>
+            <div className="input-container">
+                <input 
+                    type="password" 
+                    name="password" 
+                    value={formData.password} 
+                    onChange={handleChange}
+                />
+                <label>Password</label>
+            </div>
             <input type="submit" value={type}/>
         </form>
     </div>

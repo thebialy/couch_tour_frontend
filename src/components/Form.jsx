@@ -45,7 +45,9 @@ const Form = (props) => {
     };
 
     return (
+
         <div className="form">
+            <br/>
             <form onSubmit={handleSubmit}>
                 <input 
                     type="text" 
@@ -63,6 +65,12 @@ const Form = (props) => {
                     type="text" 
                     name="show_link" 
                     value={formData.show_link} 
+                    onChange={handleChange}
+                />
+                <input 
+                    type="text" 
+                    name="img" 
+                    value={formData.img} 
                     onChange={handleChange}
                 />
                 <input type="submit" value={action}/>
